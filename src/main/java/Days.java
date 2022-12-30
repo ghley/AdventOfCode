@@ -5,6 +5,8 @@ public abstract class Days {
     private Object testResult1;
     private Object testResult2;
 
+    private boolean test = false;
+
     public Days(Object testResult1, Object testResult2) {
         this.testResult1 = testResult1;
         this.testResult2 = testResult2;
@@ -20,11 +22,19 @@ public abstract class Days {
         var testStr = load(name+"Test.txt");
 
         System.out.println("Task 1\n======");
+        test = true;
         test(task1(testStr), testResult1);
+        test = false;
         System.out.println("Result: "+task1(str)+"\n\n");
         System.out.println("Task 2\n======");
+        test = true;
         test(task2(testStr), testResult2);
+        test = false;
         System.out.println("Result: "+task2(str));
+    }
+
+    public boolean isTest() {
+        return test;
     }
 
     private void test(Object result, Object testResult1) {
